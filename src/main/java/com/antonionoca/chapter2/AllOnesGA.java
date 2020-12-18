@@ -1,5 +1,7 @@
 package com.antonionoca.chapter2;
 
+import static java.lang.System.out;
+
 /**
  * This is our main class used to run the genetic algorithm.
  * 
@@ -31,7 +33,7 @@ public class AllOnesGA {
 		// Keep track of current generation
 		int generation = 1;
 
-		/**
+		/*
 		 * Start the evolution loop
 		 * 
 		 * Every genetic algorithm problem has different criteria for finishing.
@@ -40,9 +42,9 @@ public class AllOnesGA {
 		 * straightforward: if there's a member of the population whose
 		 * chromosome is all ones, we're done!
 		 */
-		while (ga.isTerminationConditionMet(population) == false) {
+		while (!ga.isTerminationConditionMet(population)) {
 			// Print fittest individual from population
-			System.out.println("Best solution: " + population.getFittest(0).toString());
+			out.println("Best solution: " + population.getFittest(0).toString());
 
 			// Apply crossover
 			population = ga.crossoverPopulation(population);
@@ -57,12 +59,12 @@ public class AllOnesGA {
 			generation++;
 		}
 
-		/**
+		/*
 		 * We're out of the loop now, which means we have a perfect solution on
 		 * our hands. Let's print it out to confirm that it is actually all
 		 * ones, as promised.
 		 */
-		System.out.println("Found solution in " + generation + " generations");
-		System.out.println("Best solution: " + population.getFittest(0).toString());
+		out.println("Found solution in " + generation + " generations");
+		out.println("Best solution: " + population.getFittest(0).toString());
 	}
 }

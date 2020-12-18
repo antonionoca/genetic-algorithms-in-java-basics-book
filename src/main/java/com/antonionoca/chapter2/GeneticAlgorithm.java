@@ -38,7 +38,7 @@ public class GeneticAlgorithm {
 	 * Crossover rate is the fractional probability that two individuals will
 	 * "mate" with each other, sharing genetic information, and creating
 	 * offspring with traits of each of the parents. Like mutation rate the
-	 * rance is 0.0-1.0 but small.
+	 * range is 0.0-1.0 but small.
 	 */
 	private double crossoverRate;
 
@@ -65,8 +65,7 @@ public class GeneticAlgorithm {
 	 */
 	public Population initPopulation(int chromosomeLength) {
 		// Initialize population
-		Population population = new Population(this.populationSize, chromosomeLength);
-		return population;
+		return new Population(this.populationSize, chromosomeLength);
 	}
 
 	/**
@@ -156,7 +155,7 @@ public class GeneticAlgorithm {
 	 */
 	public Individual selectParent(Population population) {
 		// Get individuals
-		Individual individuals[] = population.getIndividuals();
+		Individual[] individuals = population.getIndividuals();
 
 		// Spin roulette wheel
 		double populationFitness = population.getPopulationFitness();
@@ -201,6 +200,7 @@ public class GeneticAlgorithm {
 
 		// Loop over current population by fitness
 		for (int populationIndex = 0; populationIndex < population.size(); populationIndex++) {
+			//TODO keeping the sorted array in this function's scope is much better than sorting it on every iteration
 			Individual parent1 = population.getFittest(populationIndex);
 
 			// Apply crossover to this individual?
@@ -254,6 +254,7 @@ public class GeneticAlgorithm {
 
 		// Loop over current population by fitness
 		for (int populationIndex = 0; populationIndex < population.size(); populationIndex++) {
+			//TODO keeping the sorted array in this function's scope is much better than sorting it on every iteration
 			Individual individual = population.getFittest(populationIndex);
 
 			// Loop over individual's genes
