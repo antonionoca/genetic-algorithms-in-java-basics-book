@@ -22,14 +22,11 @@ public class GeneticAlgorithm {
 	/**
 	 * Initialize population
 	 * 
-	 * @param chromosomeLength
-	 *            The length of the individuals chromosome
 	 * @return population The initial population generated
 	 */
 	public Population initPopulation(Timetable timetable) {
 		// Initialize population
-		Population population = new Population(this.populationSize, timetable);
-		return population;
+		return new Population(this.populationSize, timetable);
 	}
 
 	/**

@@ -3,21 +3,21 @@ package com.antonionoca.chapter5;
 /**
  * Simple course module abstraction, which defines the Professors teaching the module.
  */
-public class Module {
+public class TimetableModule {
     private final int moduleId;
     private final String moduleCode;
     private final String module;
     private final int professorIds[];
     
     /**
-     * Initialize new Module
+     * Initialize new TimetableModule
      * 
      * @param moduleId
      * @param moduleCode
      * @param module
      * @param professorIds
      */
-    public Module(int moduleId, String moduleCode, String module, int professorIds[]){
+    public TimetableModule(int moduleId, String moduleCode, String module, int professorIds[]){
         this.moduleId = moduleId;
         this.moduleCode = moduleCode;
         this.module = module;

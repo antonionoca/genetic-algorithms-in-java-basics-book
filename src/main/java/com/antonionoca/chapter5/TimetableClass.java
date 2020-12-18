@@ -3,7 +3,7 @@ package com.antonionoca.chapter5;
 /**
  * A simple class abstraction -- basically a container for class, group, module, professor, timeslot, and room IDs
  */
-public class Class {
+public class TimetableClass {
     private final int classId;
     private final int groupId;
     private final int moduleId;
@@ -12,13 +12,13 @@ public class Class {
     private int roomId;
     
     /**
-     * Initialize new Class
+     * Initialize new TimetableClass
      * 
      * @param classId
      * @param groupId
      * @param moduleId
      */
-    public Class(int classId, int groupId, int moduleId){
+    public TimetableClass(int classId, int groupId, int moduleId){
         this.classId = classId;
         this.moduleId = moduleId;
         this.groupId = groupId;

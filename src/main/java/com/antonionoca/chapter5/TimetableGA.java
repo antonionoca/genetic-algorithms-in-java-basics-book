@@ -73,11 +73,11 @@ public class TimetableGA {
 
         // Print classes
         System.out.println();
-        java.lang.Class classes[] = timetable.getClasses();
+        TimetableClass classes[] = timetable.getClasses();
         int classIndex = 1;
-        for (java.lang.Class bestClass : classes) {
-            System.out.println("Class " + classIndex + ":");
-            System.out.println("Module: " + 
+        for (TimetableClass bestClass : classes) {
+            System.out.println("TimetableClass " + classIndex + ":");
+            System.out.println("TimetableModule: " +
                     timetable.getModule(bestClass.getModuleId()).getModuleName());
             System.out.println("Group: " + 
                     timetable.getGroup(bestClass.getGroupId()).getGroupId());

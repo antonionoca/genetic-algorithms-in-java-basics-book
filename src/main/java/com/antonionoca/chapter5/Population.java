@@ -144,8 +144,6 @@ public class Population {
 	/**
 	 * Shuffles the population in-place
 	 * 
-	 * @param void
-	 * @return void
 	 */
 	public void shuffle() {
 		Random rnd = new Random();

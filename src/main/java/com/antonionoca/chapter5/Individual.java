@@ -50,7 +50,7 @@ public class Individual {
 				chromosomeIndex++;
 
 				// Add random professor
-				java.lang.Module module = timetable.getModule(moduleId);
+				TimetableModule module = timetable.getModule(moduleId);
 				newChromosome[chromosomeIndex] = module.getRandomProfessorId();
 				chromosomeIndex++;
 			}
