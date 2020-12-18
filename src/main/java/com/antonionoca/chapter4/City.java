@@ -39,8 +39,7 @@ public class City {
 		double deltaYSq = Math.pow((city.getY() - this.getY()), 2);
 
 		// Calculate shortest path
-		double distance = Math.sqrt(Math.abs(deltaXSq + deltaYSq));
-		return distance;
+		return Math.sqrt(Math.abs(deltaXSq + deltaYSq));
 	}
 
 	/**

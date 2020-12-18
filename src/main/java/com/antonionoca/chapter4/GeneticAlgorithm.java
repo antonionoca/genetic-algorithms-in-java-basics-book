@@ -1,6 +1,8 @@
 package com.antonionoca.chapter4;
 import java.util.Arrays;
 
+import static java.lang.System.*;
+
 public class GeneticAlgorithm {
 	
     private int populationSize;
@@ -28,8 +30,7 @@ public class GeneticAlgorithm {
      */
     public Population initPopulation(int chromosomeLength){
         // Initialize population
-        Population population = new Population(this.populationSize, chromosomeLength);
-        return population;
+        return new Population(this.populationSize, chromosomeLength);
     }
     
 	/**
@@ -59,7 +60,7 @@ public class GeneticAlgorithm {
 	 *            the cities being referenced
 	 * @return double The fitness value for individual
 	 */
-    public double calcFitness(Individual individual, City cities[]){
+    public double calcFitness(Individual individual, City[] cities) {
         // Get fitness
         Route route = new Route(individual, cities);
         double fitness = 1 / route.getDistance();
@@ -76,7 +77,7 @@ public class GeneticAlgorithm {
      * @param population the population to evaluate
      * @param cities the cities being referenced
      */
-    public void evalPopulation(Population population, City cities[]){
+    public void evalPopulation(Population population, City[] cities){
         double populationFitness = 0;
         
         // Loop over population evaluating individuals and summing population fitness
@@ -134,7 +135,7 @@ public class GeneticAlgorithm {
 	 * @param population
 	 * @return The new population
 	 */
-    public Population crossoverPopulation(Population population){
+    public Population crossoverPopulation(Population population) {
         // Create new population
         Population newPopulation = new Population(population.size());
         
@@ -149,7 +150,7 @@ public class GeneticAlgorithm {
                 Individual parent2 = this.selectParent(population);
 
                 // Create blank offspring chromosome
-                int offspringChromosome[] = new int[parent1.getChromosomeLength()];
+                int[] offspringChromosome = new int[parent1.getChromosomeLength()];
                 Arrays.fill(offspringChromosome, -1);
                 Individual offspring = new Individual(offspringChromosome);
 
@@ -174,7 +175,7 @@ public class GeneticAlgorithm {
                     }
 
                     // If offspring doesn't have the city add it
-                    if (offspring.containsGene(parent2.getGene(parent2Gene)) == false) {
+                    if (!offspring.containsGene(parent2.getGene(parent2Gene))) {
                         // Loop to find a spare position in the child's tour
                         for (int ii = 0; ii < offspring.getChromosomeLength(); ii++) {
                             // Spare position found, add city
@@ -218,10 +219,10 @@ public class GeneticAlgorithm {
 
             // Skip mutation if this is an elite individual
             if (populationIndex >= this.elitismCount) {   
-            	// System.out.println("Mutating population member "+populationIndex);
+            	 out.println("Mutating population member "+populationIndex);
                 // Loop over individual's genes
                 for (int geneIndex = 0; geneIndex < individual.getChromosomeLength(); geneIndex++) {   
-                	// System.out.println("\tGene index "+geneIndex);
+                	 out.println("\tGene index "+geneIndex);
                     // Does this gene need mutation?
                     if (this.mutationRate > Math.random()) {
                         // Get new gene position

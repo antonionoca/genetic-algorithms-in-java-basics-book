@@ -1,5 +1,7 @@
 package com.antonionoca.chapter4;
 
+import static java.lang.System.out;
+
 /**
  * Main, executive class for the Traveling Salesman Problem.
  * 
@@ -15,12 +17,12 @@ package com.antonionoca.chapter4;
  *
  */
 public class TSP {
-	public static int maxGenerations = 10000;
+	private static int maxGenerations = 10000;
 	public static void main(String[] args) {
 		
 		// Create cities
 		int numCities = 100;
-		City cities[] = new City[numCities];
+		City[] cities = new City[numCities];
 		
 		// Loop to create random cities
 		for (int cityIndex = 0; cityIndex < numCities; cityIndex++) {
@@ -42,15 +44,15 @@ public class TSP {
 		ga.evalPopulation(population, cities);
 
 		Route startRoute = new Route(population.getFittest(0), cities);
-		System.out.println("Start Distance: " + startRoute.getDistance());
+		out.println("Start Distance: " + startRoute.getDistance());
 
 		// Keep track of current generation
 		int generation = 1;
 		// Start evolution loop
-		while (ga.isTerminationConditionMet(generation, maxGenerations) == false) {
+		while (!ga.isTerminationConditionMet(generation, maxGenerations)) {
 			// Print fittest individual from population
 			Route route = new Route(population.getFittest(0), cities);
-			System.out.println("G"+generation+" Best distance: " + route.getDistance());
+			out.println("G"+generation+" Best distance: " + route.getDistance());
 
 			// Apply crossover
 			population = ga.crossoverPopulation(population);
@@ -65,9 +67,9 @@ public class TSP {
 			generation++;
 		}
 		
-		System.out.println("Stopped after " + maxGenerations + " generations.");
+		out.println("Stopped after " + maxGenerations + " generations.");
 		Route route = new Route(population.getFittest(0), cities);
-		System.out.println("Best distance: " + route.getDistance());
+		out.println("Best distance: " + route.getDistance());
 
 	}
 }

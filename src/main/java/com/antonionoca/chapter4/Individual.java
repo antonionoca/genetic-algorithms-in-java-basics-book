@@ -15,7 +15,7 @@ public class Individual {
 	 *            The chromosome to give individual
 	 */
 	public Individual(int[] chromosome) {
-		// Create individualchromosome
+		// Create individual chromosome
 		this.chromosome = chromosome;
 	}
 
