@@ -57,7 +57,6 @@ public class TimetableModule {
      * @return professorId
      */
     public int getRandomProfessorId(){
-        int professorId = professorIds[(int) (professorIds.length * Math.random())];
-        return professorId;
+        return professorIds[(int) (professorIds.length * Math.random())];
     }
 }

@@ -1,5 +1,7 @@
 package com.antonionoca.chapter5;
 
+import static java.lang.System.out;
+
 /**
  * Don't be daunted by the number of classes in this chapter -- most of them are
  * just simple containers for information, and only have a handful of properties
@@ -46,10 +48,10 @@ public class TimetableGA {
         int generation = 1;
         
         // Start evolution loop
-        while (ga.isTerminationConditionMet(generation, 1000) == false
-            && ga.isTerminationConditionMet(population) == false) {
+        while (!ga.isTerminationConditionMet(generation, 1000)
+            && !ga.isTerminationConditionMet(population)) {
             // Print fitness
-            System.out.println("G" + generation + " Best fitness: " + population.getFittest(0).getFitness());
+            out.println("G" + generation + " Best fitness: " + population.getFittest(0).getFitness());
 
             // Apply crossover
             population = ga.crossoverPopulation(population);
@@ -66,28 +68,28 @@ public class TimetableGA {
 
         // Print fitness
         timetable.createClasses(population.getFittest(0));
-        System.out.println();
-        System.out.println("Solution found in " + generation + " generations");
-        System.out.println("Final solution fitness: " + population.getFittest(0).getFitness());
-        System.out.println("Clashes: " + timetable.calcClashes());
+        out.println();
+        out.println("Solution found in " + generation + " generations");
+        out.println("Final solution fitness: " + population.getFittest(0).getFitness());
+        out.println("Clashes: " + timetable.calcClashes());
 
         // Print classes
-        System.out.println();
+        out.println();
         TimetableClass classes[] = timetable.getClasses();
         int classIndex = 1;
         for (TimetableClass bestClass : classes) {
-            System.out.println("TimetableClass " + classIndex + ":");
-            System.out.println("TimetableModule: " +
+            out.println("TimetableClass " + classIndex + ":");
+            out.println("TimetableModule: " +
                     timetable.getModule(bestClass.getModuleId()).getModuleName());
-            System.out.println("Group: " + 
+            out.println("Group: " +
                     timetable.getGroup(bestClass.getGroupId()).getGroupId());
-            System.out.println("Room: " + 
+            out.println("Room: " +
                     timetable.getRoom(bestClass.getRoomId()).getRoomNumber());
-            System.out.println("Professor: " + 
+            out.println("Professor: " +
                     timetable.getProfessor(bestClass.getProfessorId()).getProfessorName());
-            System.out.println("Time: " + 
+            out.println("Time: " +
                     timetable.getTimeslot(bestClass.getTimeslotId()).getTimeslot());
-            System.out.println("-----");
+            out.println("-----");
             classIndex++;
         }
     }

@@ -30,7 +30,7 @@ public class Timetable {
 	private final HashMap<Integer, TimetableModule> modules;
 	private final HashMap<Integer, Group> groups;
 	private final HashMap<Integer, Timeslot> timeslots;
-	private TimetableClass classes[];
+	private TimetableClass[] classes;
 
 	private int numClasses = 0;
 
@@ -207,8 +207,7 @@ public class Timetable {
 	 */
 	public Room getRandomRoom() {
 		Object[] roomsArray = this.rooms.values().toArray();
-		Room room = (Room) roomsArray[(int) (roomsArray.length * Math.random())];
-		return room;
+		return (Room) roomsArray[(int) (roomsArray.length * Math.random())];
 	}
 
 	/**
@@ -278,8 +277,7 @@ public class Timetable {
 	 */
 	public Timeslot getRandomTimeslot() {
 		Object[] timeslotArray = this.timeslots.values().toArray();
-		Timeslot timeslot = (Timeslot) timeslotArray[(int) (timeslotArray.length * Math.random())];
-		return timeslot;
+		return (Timeslot) timeslotArray[(int) (timeslotArray.length * Math.random())];
 	}
 
 	/**
